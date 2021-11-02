@@ -1,9 +1,10 @@
-﻿
+﻿using Xamarin.Forms;
+
 namespace Weather.Prism.Views
 {
-    public partial class MainPage
+    public partial class AboutPage : ContentPage
     {
-        public MainPage()
+        public AboutPage()
         {
             InitializeComponent();
         }

@@ -18,6 +18,10 @@ namespace Weather.Prism.Droid
             base.OnCreate(savedInstanceState);
 
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
+
+            //Before loading the app, upload the image for the images
+            FFImageLoading.Forms.Platform.CachedImageRenderer.Init(true);
+
             LoadApplication(new App(new AndroidInitializer()));
         }
 

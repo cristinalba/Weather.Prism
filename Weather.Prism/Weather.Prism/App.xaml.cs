@@ -19,9 +19,9 @@ namespace Weather.Prism
         protected override async void OnInitialized()
         {
             InitializeComponent();
-            //await NavigationService.NavigateAsync
-            //        ($"/{nameof(WeatherMasterDetailPage)}/NavigationPage/{nameof(WeatherPage)}");
-            await NavigationService.NavigateAsync("NavigationPage/WeatherPage");
+            await NavigationService.NavigateAsync
+                    ($"/{nameof(WeatherMasterDetailPage)}/NavigationPage/{nameof(WeatherPage)}");
+            //await NavigationService.NavigateAsync("NavigationPage/WeatherPage");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
@@ -37,6 +37,8 @@ namespace Weather.Prism
             containerRegistry.RegisterForNavigation<AboutPage, AboutPageViewModel>();
            
             containerRegistry.RegisterForNavigation<WeatherMasterDetailPage, WeatherMasterDetailPageViewModel>();
+            containerRegistry.RegisterForNavigation<Privacy, PrivacyViewModel>();
+            containerRegistry.RegisterForNavigation<AboutPage, AboutPageViewModel>();
         }
     }
 }

@@ -55,21 +55,21 @@ namespace Weather.Prism.Services
                 };
             }
         }
-        const string WeatherCityUri = "http://api.openweathermap.org/data/2.5/weather?q={0}&units=metric&appid=6101f97693f24c222e1d175691fda7bc";
-        public async Task<WeatherRoot> GetWeather(string city)
-        {
-            using (var client = new HttpClient())
-            {
-                var url = string.Format(WeatherCityUri, city); 
-                var json = await client.GetStringAsync(url);
+        //const string WeatherCityUri = "http://api.openweathermap.org/data/2.5/weather?q={0}&units=metric&appid=6101f97693f24c222e1d175691fda7bc";
+        //public async Task<WeatherRoot> GetWeather(string city)
+        //{
+        //    using (var client = new HttpClient())
+        //    {
+        //        var url = string.Format(WeatherCityUri, city); 
+        //        var json = await client.GetStringAsync(url);
 
-                if (string.IsNullOrWhiteSpace(json))
-                    return null;
+        //        if (string.IsNullOrWhiteSpace(json))
+        //            return null;
 
-                return DeserializeObject<WeatherRoot>(json);
-            }
+        //        return DeserializeObject<WeatherRoot>(json);
+        //    }
 
-        }
+        //}
 
 
         const string ForecastUri = "http://api.openweathermap.org/data/2.5/forecast?id={0}&units=metric&appid=6101f97693f24c222e1d175691fda7bc";

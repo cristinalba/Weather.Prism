@@ -7,11 +7,11 @@ using System.Linq;
 
 namespace Weather.Prism.ViewModels
 {
-    public class AboutPageViewModel : ViewModelBase
+    public class PrivacyViewModel : ViewModelBase
     {
-        public AboutPageViewModel(INavigationService navigationService): base(navigationService)
+        public PrivacyViewModel(INavigationService navigationService) : base(navigationService)
         {
-            Title = "About";
+            Title = "Privacy";
         }
     }
 }

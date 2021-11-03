@@ -20,7 +20,9 @@
         <Label Text="{Binding Temp}" FontSize="24"/>
         <Label Text="{Binding Condition}"/>
 
-        <Image  Source="ic_more_vert" />
+        <Label Text="{Binding Date}"/>
+
+        <Image  Source="{Binding Icon}" />
         <ActivityIndicator IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}"/>
     </StackLayout>
 

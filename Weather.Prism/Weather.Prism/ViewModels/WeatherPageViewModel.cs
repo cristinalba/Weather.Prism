@@ -18,14 +18,10 @@ namespace Weather.Prism.ViewModels
     {
         #region atributos
 
-        //private const string _useCityKey = "use_city";
-        //private static readonly bool _useCityDefault = true;
-
-
-        //private const string _cityKey = "city";
-        //private static readonly string _cityDefault = "Madrid";
 
         private string _city;
+        private string _icon;
+        private string _date;
 
         private readonly IApiService _apiService;
         private List<string> _cities = new List<string> { "Dublin", "Lisbon", "Madrid" };
@@ -47,7 +43,7 @@ namespace Weather.Prism.ViewModels
             IApiService apiService) : base(navigationService)
         {
             _apiService = apiService;
-            Title = "WeatherPage";
+            Title = "Weather";
             //LoadCitiesAsync();
         }
 
@@ -59,12 +55,7 @@ namespace Weather.Prism.ViewModels
         #endregion
 
         #region propiedades
-        //public static bool UseCity
-        //{
-        //    get => Preferences.Get(_useCityKey, _useCityDefault);
-        //    set => Preferences.Set(_useCityKey, value);
-        //}
-
+ 
         public string City //location
         {
             get { return _city; }
@@ -75,13 +66,13 @@ namespace Weather.Prism.ViewModels
             get { return _temp; }
             set { SetProperty(ref _temp, value); }
         }
-
-        
+      
         public string Condition
         {
             get { return _condition; }
-            set { SetProperty(ref _condition, value); ; }
+            set { SetProperty(ref _condition, value); }
         }
+
 
         public WeatherForecastRoot Forecast
         {
@@ -107,16 +98,6 @@ namespace Weather.Prism.ViewModels
             IsBusy = true;
             try
             {
-                //WeatherRoot weatherRoot = null;
-
-                ////Get weather by city
-                //weatherRoot = await _apiService.GetWeather(City);           
-
-                ////Get forecast based on cityId
-                //Forecast = await _apiService.GetForecast(weatherRoot.CityId);
-
-                //Temp = $"Temperature: {weatherRoot?.MainWeather?.Temperature ?? 0}°C";
-                //Condition = $"{weatherRoot.Name}: {weatherRoot?.Weather?[0]?.Description ?? string.Empty}";
 
                 string url = App.Current.Resources["UrlAPI"].ToString();
 
@@ -131,8 +112,8 @@ namespace Weather.Prism.ViewModels
                 var weatherRoot = (WeatherRoot)response.Result;
 
                 Temp = $"Temperature: {weatherRoot?.MainWeather?.Temperature ?? 0}°C";
-                Condition = $"{weatherRoot.Name}: {weatherRoot?.Weather?[0]?.Description ?? string.Empty}";
-
+                Condition = $"{weatherRoot.Name} : {weatherRoot?.Weather?[0]?.Description ?? string.Empty}";
+               
 
             }
             catch (Exception ex)

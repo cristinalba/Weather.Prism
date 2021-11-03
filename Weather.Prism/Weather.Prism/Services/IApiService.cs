@@ -13,7 +13,7 @@ namespace Weather.Prism.Services
 
         Task<WeatherForecastRoot> GetForecast(int id);
 
-        Task<WeatherRoot> GetWeather(string city);
+        //Task<WeatherRoot> GetWeather(string city);
 
         Task<Response> GetWeatherAsync<T>(
            string urlBase,

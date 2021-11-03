@@ -35,7 +35,7 @@ namespace Weather.Prism.ViewModels
                 {
                     Icon = "ic_shopping_cart",
                     PageName = $"{nameof(WeatherPage)}",
-                    Title = "WeatherPage"
+                    Title = "Weather"
                 },
                 new Menu
                 {
@@ -43,13 +43,20 @@ namespace Weather.Prism.ViewModels
                     PageName = $"{nameof(AboutPage)}",
                     Title = "About",
                     IsLoginRequired = false
+                },
+                new Menu
+                {
+                    Icon = "ic_history",
+                    PageName = $"{nameof(Privacy)}",
+                    Title = "Privacy",
+                    IsLoginRequired = false
                 }
             };
-            Menus = new ObservableCollection<MenuItemViewModel>(Menus.Select(m => new MenuItemViewModel(_navigationService)
+            Menus = new ObservableCollection<MenuItemViewModel>(menus.Select(m => new MenuItemViewModel(_navigationService)
             {
                 Icon = m.Icon,
                 PageName = m.PageName,
-                //Title = m.Title,
+                Title = m.Title,
                 IsLoginRequired = m.IsLoginRequired
             }).ToList());
         }

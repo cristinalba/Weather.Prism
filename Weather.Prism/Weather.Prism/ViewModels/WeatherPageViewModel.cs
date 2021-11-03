@@ -114,43 +114,55 @@ namespace Weather.Prism.ViewModels
             if (IsBusy)
                 return;
 
-            IsBusy = true;
-            try
-            {
-
-                string url = App.Current.Resources["UrlAPI"].ToString();
-
-                Response response = await _apiService.GetWeatherAsync<WeatherRoot>(url, "/data/2.5/weather?", _city, "6101f97693f24c222e1d175691fda7bc");
-
-                if(!response.IsSuccess)
-                {
-                    await App.Current.MainPage.DisplayAlert("Error", response.Message, "Accept");
-                    return;
-                }
-
-                var weatherRoot = (WeatherRoot)response.Result;
-
-                Temp = $"Temperature: {weatherRoot?.MainWeather?.Temperature ?? 0}°C";
-                
-                Hum = $"Humidity: {weatherRoot?.MainWeather?.Humidity ?? 0}%"; 
-                Press = $"Pressure: {weatherRoot?.MainWeather?.Pressure ?? 0}hPa";
-
-                Condition = $"{weatherRoot.Name} : {weatherRoot?.Weather?[0]?.Description ?? string.Empty}";
-
-                Icon = $"{weatherRoot.Weather[0].Icon}";
-
-
-            }
-            catch (Exception ex)
-            {
-                Temp = "Info not available. Try again later";
-                System.Diagnostics.Debug.WriteLine(ex.Message);
-            }
-            finally
-            {
-                IsBusy = false;
-            }
             
+            if (string.IsNullOrEmpty(City))
+            {
+                await App.Current.MainPage.DisplayAlert("Error", "You must enter a city.", "Accept");
+                return;
+            }
+            else
+            {
+                IsBusy = true;
+                try
+                {
+
+                    string url = App.Current.Resources["UrlAPI"].ToString();
+
+                    Response response = await _apiService.GetWeatherAsync<WeatherRoot>(url, "/data/2.5/weather?", _city, "6101f97693f24c222e1d175691fda7bc");
+
+                    if(!response.IsSuccess)
+                    {
+                        await App.Current.MainPage.DisplayAlert("Error", response.Message, "Accept");
+                        return;
+                       
+                    }
+
+                    var weatherRoot = (WeatherRoot)response.Result;
+
+                    Temp = $"Temperature: {weatherRoot?.MainWeather?.Temperature ?? 0}°C in {weatherRoot.Name}";
+                
+                    Hum = $"Humidity: {weatherRoot?.MainWeather?.Humidity ?? 0}%"; 
+                    Press = $"Pressure: {weatherRoot?.MainWeather?.Pressure ?? 0}hPa";
+
+                    Condition = $"{weatherRoot.Name} : {weatherRoot?.Weather?[0]?.Description ?? string.Empty}";
+
+                    if(weatherRoot.Weather[0].Description.Contains("cloud"))
+                    Icon = "cloudy";
+                    else if(weatherRoot.Weather[0].Description.Contains("clear"))
+                    Icon = "sunny";
+
+                }
+                catch (Exception ex)
+                {
+                    Temp = "Info not available. Try again later";
+                    System.Diagnostics.Debug.WriteLine(ex.Message);
+                }
+                finally
+                {
+                    IsBusy = false;
+                }
+            }
+
         }
 
        

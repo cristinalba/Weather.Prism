@@ -24,7 +24,7 @@
         <Label Text="{Binding Condition}"/>
         
 
-        <Image  Source="{Binding Icon}" />
+        <Image  Source="{Binding Icon}"/>
         <ActivityIndicator IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}"/>
     </StackLayout>
 

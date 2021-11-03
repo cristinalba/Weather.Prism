@@ -33,20 +33,20 @@ namespace Weather.Prism.ViewModels
                 },
                 new Menu
                 {
-                    Icon = "ic_shopping_cart",
+                    Icon = "ic_weather",
                     PageName = $"{nameof(WeatherPage)}",
                     Title = "Weather"
                 },
                 new Menu
                 {
-                    Icon = "ic_history",
+                    Icon = "ic_about",
                     PageName = $"{nameof(AboutPage)}",
                     Title = "About",
                     IsLoginRequired = false
                 },
                 new Menu
                 {
-                    Icon = "ic_history",
+                    Icon = "ic_privacy",
                     PageName = $"{nameof(Privacy)}",
                     Title = "Privacy",
                     IsLoginRequired = false

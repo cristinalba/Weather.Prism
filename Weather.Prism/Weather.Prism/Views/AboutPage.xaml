@@ -25,6 +25,9 @@
             <Label Text="Versão 2.0"
                
                 HorizontalOptions="CenterAndExpand" />
+            <Label Text=""
+               
+                HorizontalOptions="CenterAndExpand" />
         </StackLayout>
     </ContentPage.Content>
 

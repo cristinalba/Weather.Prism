@@ -18,9 +18,11 @@
         <Button Text="Get Weather" Command="{Binding GetWeatherCommand}"/>
         
         <Label Text="{Binding Temp}" FontSize="24"/>
+        
+        <Label Text="{Binding Hum}"/>
+        <Label Text="{Binding Press}"/>
         <Label Text="{Binding Condition}"/>
-
-        <Label Text="{Binding Date}"/>
+        
 
         <Image  Source="{Binding Icon}" />
         <ActivityIndicator IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}"/>

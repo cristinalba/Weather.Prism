@@ -21,7 +21,11 @@ namespace Weather.Prism.ViewModels
 
         private string _city;
         private string _icon;
-        private string _date;
+       
+
+        private string _press;
+        private string _hum;
+
 
         private readonly IApiService _apiService;
         private List<string> _cities = new List<string> { "Dublin", "Lisbon", "Madrid" };
@@ -35,7 +39,7 @@ namespace Weather.Prism.ViewModels
         #endregion
 
 
-        WeatherClasses WeatherService { get; } = new WeatherClasses();
+        //WeatherClasses WeatherService { get; } = new WeatherClasses();
         WeatherForecastRoot forecast;
 
         public WeatherPageViewModel(
@@ -71,6 +75,21 @@ namespace Weather.Prism.ViewModels
         {
             get { return _condition; }
             set { SetProperty(ref _condition, value); }
+        }
+        public string Hum
+        {
+            get { return _hum; }
+            set { SetProperty(ref _hum, value); }
+        }
+        public string Press
+        {
+            get { return _press; }
+            set { SetProperty(ref _press, value); }
+        }
+        public string Icon
+        {
+            get { return _icon; }
+            set { SetProperty(ref _icon, value); }
         }
 
 
@@ -112,8 +131,14 @@ namespace Weather.Prism.ViewModels
                 var weatherRoot = (WeatherRoot)response.Result;
 
                 Temp = $"Temperature: {weatherRoot?.MainWeather?.Temperature ?? 0}°C";
+                
+                Hum = $"Humidity: {weatherRoot?.MainWeather?.Humidity ?? 0}%"; 
+                Press = $"Pressure: {weatherRoot?.MainWeather?.Pressure ?? 0}hPa";
+
                 Condition = $"{weatherRoot.Name} : {weatherRoot?.Weather?[0]?.Description ?? string.Empty}";
-               
+
+                Icon = $"{weatherRoot.Weather[0].Icon}";
+
 
             }
             catch (Exception ex)

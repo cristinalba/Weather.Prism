@@ -8,7 +8,11 @@
              BackgroundColor="{StaticResource ColorBackground}">
     <ContentPage.Content>
     <StackLayout>
-        <Label Text="All rights reserved to CJA"
+            <Image Source="cinelLogo"
+                    VerticalOptions="CenterAndExpand" >
+
+            </Image>
+            <Label Text="All rights reserved to CJA"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
         </StackLayout>
